@@ -136,32 +136,33 @@ const input = `@.@@@@@@@@.@..@@@@..@@@@@.@@@.@.@@@@@..@..@.@@@@.@@@@@..@@@@@@@@@
 @@.@@@@@@@.@.@@@.@@@.@.@@.@@.@.@@..@..@.@..@@@.@@@.@.@.@@@@.@.@@.@@@.@@@@@@.@@@.@@@@..@.@@@.@..@@@@@@.@.@...@.@@.@.@@..@.@.@@.@@.@@@.@.@@
 .@@@@.@@.@@@.@@.@@@@@@..@@@@@@..@@@.@@.....@.@@...@.@@@@.@.@..@.@@@@..@@@@@@@.....@.@@@....@@.@..@.@@.@@@@@.@@.@..@.@.@..@.@@.@@.@.@@@@@@`;
 function countAccessibleRolls(input) {
-  const grid = input.trim().split('\n');
-   
+  const grid = input.trim().split("\n");
+
   const h = grid.length;
   const w = grid[0].length;
 
   const dirs = [
-    [-1, -1], [-1, 0], [-1, 1],
-    [0, -1],           [0, 1],
-    [1, -1],  [1, 0],  [1, 1],
+    [-1, -1],
+    [-1, 0],
+    [-1, 1],
+    [0, -1],
+    [0, 1],
+    [1, -1],
+    [1, 0],
+    [1, 1],
   ];
 
   let count = 0;
 
   for (let i = 0; i < h; i++) {
     for (let j = 0; j < w; j++) {
-      if (grid[i][j] !== '@') continue;
+      if (grid[i][j] !== "@") continue;
 
       let adj = 0;
       for (const [di, dj] of dirs) {
         const ni = i + di;
         const nj = j + dj;
-        if (
-          ni >= 0 && ni < h &&
-          nj >= 0 && nj < w &&
-          grid[ni][nj] === '@'
-        ) {
+        if (ni >= 0 && ni < h && nj >= 0 && nj < w && grid[ni][nj] === "@") {
           adj++;
         }
       }
@@ -172,7 +173,5 @@ function countAccessibleRolls(input) {
 
   return count;
 }
-
-
 
 console.log(countAccessibleRolls(input));
